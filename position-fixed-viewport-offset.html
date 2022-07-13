@@ -1,0 +1,42 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<div id="content"><input></div>
+<div id="box"></div>
+
+<style>
+#box {
+	position: fixed;
+	pointer-events: none;
+	box-sizing: border-box;
+	border-top: blue;
+	border-right: yellow;
+	border-bottom: green;
+	border-left: red;
+	border-width: 20px;
+	border-style: solid;
+}
+
+#content {
+	width: 120vw;
+	height: 120vh;
+	background: repeating-linear-gradient(to bottom right, white, black);
+	background-size: 250px 250px;
+}
+</style>
+
+<script>
+const box = document.getElementById('box');
+
+function resizeHandler() {
+	box.style.left = visualViewport.offsetLeft + 'px';
+	box.style.top = visualViewport.offsetTop + 'px';
+	box.style.width = visualViewport.width + 'px';
+	box.style.height = visualViewport.height + 'px';
+}
+
+window.visualViewport.addEventListener('resize', resizeHandler);
+window.visualViewport.addEventListener('scroll', resizeHandler);
+window.addEventListener('scroll', resizeHandler);
+resizeHandler();
+</script>
+
